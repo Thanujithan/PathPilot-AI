@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from routes.auth import router as auth_router
+from routes.profile import router as profile_router
+from routes.resume import router as resume_router
 
 load_dotenv()
 
@@ -13,6 +15,8 @@ app = FastAPI(
     version="1.0.0"
 )
 app.include_router(auth_router)
+app.include_router(profile_router)
+app.include_router(resume_router)
 
 MONGODB_URI = os.getenv("MONGODB_URI")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "pathpilot")
