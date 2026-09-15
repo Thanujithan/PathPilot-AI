@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from routes.auth import router as auth_router
 from routes.profile import router as profile_router
 from routes.resume import router as resume_router
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -13,6 +14,16 @@ app = FastAPI(
     title="CarePlanix AI API",
     description="Agentic AI Career and Internship Management System",
     version="1.0.0"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 app.include_router(auth_router)
 app.include_router(profile_router)
