@@ -10,7 +10,7 @@ from routes.resume import router as resume_router
 load_dotenv()
 
 app = FastAPI(
-    title="PathPilot AI API",
+    title="CarePlanix AI API",
     description="Agentic AI Career and Internship Management System",
     version="1.0.0"
 )
@@ -28,7 +28,7 @@ db = client[DATABASE_NAME]
 @app.get("/")
 def root():
     return {
-        "message": "Welcome to PathPilot AI 🚀",
+        "message": "Welcome to CarePlanix AI 🚀",
         "status": "Backend is running"
     }
 
